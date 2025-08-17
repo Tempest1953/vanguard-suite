@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.agents_router import router   # << notice agents_router, not router
+from app.agents_router import router   # import the new router file
 
 app = FastAPI(title="Vanguard Sales Agent Suite")
 
@@ -7,5 +7,5 @@ app = FastAPI(title="Vanguard Sales Agent Suite")
 def root():
     return {"ok": True, "service": "Vanguard Sales Agent Suite"}
 
-# include our router
+# include the AI agent routes
 app.include_router(router)
