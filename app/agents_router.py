@@ -17,3 +17,26 @@ def strategic():
         "message": "Strategic buyer campaign endpoint ready",
         "product": "CFOCore"
     }
+@router.get("/dealstrike")
+def dealstrike():
+    return {
+        "ok": True,
+        "message": "DealStrike AI negotiation engine live",
+        "product": "AutoBroker.AI"
+    }
+
+@router.get("/evalintel")
+def evalintel():
+    return {
+        "ok": True,
+        "message": "EvalIntel market intelligence active",
+        "product": "SEORISE.AI"
+    }
+
+@router.get("/investorlens")
+def investorlens():
+    return {
+        "ok": True,
+        "message": "InvestorLens AI outreach module running",
+        "product": "SentientX 2.0"
+    }
