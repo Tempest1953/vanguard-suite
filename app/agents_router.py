@@ -1,6 +1,6 @@
-from utils.email_sender import send_email
 from fastapi import APIRouter
 from datetime import datetime
+from utils.email_sender import send_email   # 👈 import the email helper
 
 router = APIRouter()
 
@@ -15,11 +15,20 @@ def recruitment():
         "action": "Outreach pitch triggered for LexiPlex"
     }
     logs.append(entry)
+
+    # send a demo email (adjust recipient + content later)
+    result = send_email(
+        "testrecipient@example.com",
+        "LexiPlex AI Outreach",
+        "Hello, this is LexiPlex AI reaching out about recruitment solutions."
+    )
+
     return {
         "ok": True,
         "message": "Recruitment campaign endpoint ready",
         "product": "LexiPlex",
-        "log_id": len(logs)
+        "log_id": len(logs),
+        "email_result": result
     }
 
 @router.get("/strategic")
@@ -40,21 +49,3 @@ def strategic():
 @router.get("/logs")
 def get_logs():
     return {"count": len(logs), "entries": logs}
-    from fastapi import APIRouter
-from app.logs import add_log, get_logs  # 👈 import log functions
-
-router = APIRouter()
-
-@router.get("/recruitment")
-def recruitment():
-    add_log("recruitment")
-    return {"ok": True, "message": "Recruitment campaign endpoint ready", "product": "LexiPlex"}
-
-@router.get("/strategic")
-def strategic():
-    add_log("strategic")
-    return {"ok": True, "message": "Strategic buyer campaign endpoint ready", "product": "CFOCore"}
-
-@router.get("/logs")
-def logs():
-    return {"count": len(get_logs()), "entries": get_logs()}
