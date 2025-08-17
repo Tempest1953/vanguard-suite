@@ -17,6 +17,7 @@ def strategic():
         "message": "Strategic buyer campaign endpoint ready",
         "product": "CFOCore"
     }
+
 @router.get("/dealstrike")
 def dealstrike():
     return {
