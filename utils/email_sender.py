@@ -10,7 +10,7 @@ def send_email(to_email: str, subject: str, body: str):
 
     # Build the email
     msg = MIMEMultipart()
-    msg["From"] = from_email
+    msg["From"] = SMTP_USER
     msg["To"] = to_email
     msg["Subject"] = subject
     msg.attach(MIMEText(body, "plain"))
