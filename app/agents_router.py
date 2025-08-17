@@ -1,3 +1,4 @@
+from utils.email_sender import send_email
 from fastapi import APIRouter
 from datetime import datetime
 
