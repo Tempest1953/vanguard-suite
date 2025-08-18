@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from datetime import datetime
-from utils.email_sender import send_email   # 👈 import the email helper
+from utils.email_sender import send_email   # email helper
 
 router = APIRouter()
 
@@ -16,7 +16,7 @@ def recruitment():
     }
     logs.append(entry)
 
-    # send a demo email (adjust recipient + content later)
+    # send a demo email
     result = send_email(
         "testrecipient@example.com",
         "LexiPlex AI Outreach",
@@ -49,3 +49,12 @@ def strategic():
 @router.get("/logs")
 def get_logs():
     return {"count": len(logs), "entries": logs}
+
+# 👇 New route for Automations
+@router.get("/sweep")
+def sweep():
+    return {
+        "ok": True,
+        "message": "Post-Ignition Sweep successful",
+        "regions": ["EU", "US", "Asia", "Global"]
+    }
